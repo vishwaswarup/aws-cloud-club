@@ -12,7 +12,7 @@ export const EVENTS: Event[] = [
     speaker: {
       name: 'Shubham Londhe',
       designation: 'Senior Developer Advocate',
-      image: 'src/images/shubhamlondhe.jpeg',
+      image: '/images/shubhamlondhe.jpeg',
     },
   },
 ];
