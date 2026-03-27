@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Cloud, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -16,12 +16,16 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="p-2 bg-aws-orange rounded-lg group-hover:rotate-12 transition-transform">
-              <Cloud className="w-6 h-6 text-black" />
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-11 h-11 p-[2px] rounded-xl overflow-hidden bg-black/70 border border-white/15 group-hover:border-aws-orange/60 transition-colors">
+              <img
+                src="/images/cloud-logo.svg"
+                alt="AWS Cloud Club Logo"
+                className="w-full h-full object-cover scale-[1.45]"
+              />
             </div>
             <span className="text-xl font-bold tracking-tight">
-              AWS <span className="text-aws-orange">Cloud Club</span>
+              AWS <span className="text-aws-orange">Cloud Club MUJ</span>
             </span>
           </Link>
 

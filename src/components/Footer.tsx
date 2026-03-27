@@ -39,7 +39,13 @@ export default function Footer() {
               <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-aws-orange hover:text-black transition-all">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg hover:bg-aws-orange hover:text-black transition-all">
+              <a
+                href="https://www.linkedin.com/company/aws-cloud-club-muj/posts/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="AWS Cloud Club MUJ on LinkedIn"
+                className="p-2 bg-white/5 rounded-lg hover:bg-aws-orange hover:text-black transition-all"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>

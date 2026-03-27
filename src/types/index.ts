@@ -1,3 +1,10 @@
+export interface Speaker {
+  name: string;
+  designation: string;
+  image: string;
+  bio?: string;
+}
+
 export interface Event {
   id: string;
   title: string;
@@ -6,10 +13,12 @@ export interface Event {
   venue: string;
   shortDescription: string;
   fullDescription: string;
-  speaker: {
-    name: string;
-    designation: string;
-    image: string;
+  registrationOpen: boolean;
+  speakers: Speaker[];
+  recap?: {
+    title: string;
+    paragraphs: string[];
+    photos: string[];
   };
 }
 
