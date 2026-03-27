@@ -186,7 +186,7 @@ export default function EventDetailsPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder="Steve Smith"
                       className="aws-input"
                     />
                   </div>
@@ -199,7 +199,7 @@ export default function EventDetailsPage() {
                       name="reg_id"
                       value={formData.reg_id}
                       onChange={handleChange}
-                      placeholder="e.g. 2021CSE001"
+                      placeholder="e.g. 2427010290"
                       className="aws-input"
                     />
                   </div>
@@ -212,7 +212,7 @@ export default function EventDetailsPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="john.doe@college.edu"
+                      placeholder="steve.2427010290@manipal.edu"
                       className="aws-input"
                     />
                   </div>
@@ -225,7 +225,7 @@ export default function EventDetailsPage() {
                       name="branch_section"
                       value={formData.branch_section}
                       onChange={handleChange}
-                      placeholder="CSE - Section A"
+                      placeholder="CSE AIML- Section A"
                       className="aws-input"
                     />
                   </div>
@@ -250,7 +250,7 @@ export default function EventDetailsPage() {
                       name="faculty_names"
                       value={formData.faculty_names}
                       onChange={handleChange}
-                      placeholder="e.g. Dr. Smith, Prof. Johnson"
+                      placeholder="e.g. Dr. Arun, Prof. Preeti"
                       rows={2}
                       className="aws-input resize-none"
                     />
