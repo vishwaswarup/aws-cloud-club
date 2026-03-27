@@ -44,7 +44,7 @@ export default function EventDetailsPage() {
 
     try {
       if (!supabase) {
-        throw new Error('Supabase is not configured or the URL is invalid. Please ensure VITE_SUPABASE_URL is a valid HTTP/HTTPS URL and VITE_SUPABASE_ANON_KEY is provided in the Secrets panel.');
+        throw new Error('Supabase is not configured or the URL is invalid. Please ensure VITE_SUPABASE_URL is a valid HTTP/HTTPS URL and VITE_SUPABASE_ANON_KEY is set in your deployment environment variables.');
       }
 
       const { error } = await supabase

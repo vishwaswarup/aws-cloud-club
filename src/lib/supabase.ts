@@ -1,7 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = (import.meta as any).env.VITE_SUPABASE_URL;
-const supabaseAnonKey = (import.meta as any).env.VITE_SUPABASE_ANON_KEY;
+const normalizeEnvValue = (value: unknown) => {
+  if (typeof value !== 'string') return '';
+  const trimmed = value.trim();
+  // Allow values pasted with wrapping quotes in hosting dashboards.
+  return trimmed.replace(/^['\"]|['\"]$/g, '');
+};
+
+const supabaseUrl = normalizeEnvValue((import.meta as any).env.VITE_SUPABASE_URL);
+const supabaseAnonKey = normalizeEnvValue((import.meta as any).env.VITE_SUPABASE_ANON_KEY);
 
 const isValidUrl = (url: string) => {
   if (!url) return false;
