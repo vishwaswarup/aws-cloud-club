@@ -27,7 +27,7 @@ export const EVENTS: Event[] = [
     time: '10:30 AM - 12:30 PM',
     venue: 'LHC 103 AB4',
     shortDescription: 'We are excited to share that the AWS Cloud Club MUJ at Manipal University Jaipur has been officially launched, bringing together students passionate about cloud computing, innovation, and emerging technologies.',
-    fullDescription: 'A special thank you to our esteemed speaker Mr. Pawan Sharma, AWS Community Builder, for delivering an insightful session on AWS, cloud computing, and opportunities in the cloud ecosystem. We were also delighted to have Mr. Somil Jain, Cloud Engineer at Celebal Technologies who joined us virtually and shared valuable insights on industry experiences and guidance for students entering the cloud domain.',
+    fullDescription: 'The AWS Cloud Club MUJ was officially launched with an inspiring inaugural event, bringing together students eager to explore cloud computing, AWS technologies, and future career opportunities in the cloud domain. The session featured valuable insights from industry experts like Pawan Sharma and Somil Jain, making it a strong start to building a vibrant and innovative cloud community on campus.',
     registrationOpen: false,
     speakers: [
       {
