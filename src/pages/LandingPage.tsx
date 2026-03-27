@@ -118,7 +118,7 @@ export default function LandingPage() {
             >
               <div className="aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src="https://picsum.photos/seed/aws-cloud/800/600"
+                  src="/images/cloud computing photo landing page.jpg"
                   alt="Students working"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
