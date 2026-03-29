@@ -6,12 +6,10 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ Updated links
+  // ✅ Only relevant links now
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Meetup', path: '/meetup' },
-    { name: 'Classes', path: '/classes' },
-    { name: 'Attendance', path: '/attendance' },
+    { name: 'Event', path: '/event' },
   ];
 
   return (
@@ -33,7 +31,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* ✅ Desktop Nav */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -58,7 +56,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ✅ Mobile Nav */}
+      {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
