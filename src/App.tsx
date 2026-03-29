@@ -17,12 +17,11 @@ export default function App() {
 
         <main className="flex-grow">
           <Routes>
+            {/* Home */}
             <Route path="/" element={<LandingPage />} />
-            <Route path="/event" element={<EventDetailsPage />} />
 
-            <Route path="/meetup" element={<MeetupPage />} />
-            <Route path="/classes" element={<ClassesPage />} />
-            <Route path="/attendance" element={<AttendancePage />} />
+            {/* Event page (ALL sections inside this) */}
+            <Route path="/event" element={<EventDetailsPage />} />
           </Routes>
         </main>
 
