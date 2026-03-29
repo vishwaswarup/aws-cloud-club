@@ -82,12 +82,40 @@ export default function EventDetailsPage() {
                 </div>
               </div>
 
+              {/* Description */}
               <div className="mb-16">
                 <h3 className="text-2xl font-bold mb-4">About the Event</h3>
                 <p className="text-gray-400 text-lg leading-relaxed">
                   {event.fullDescription}
                 </p>
               </div>
+
+              {/* 🔥 RECAP + PHOTOS FOR PAST EVENTS */}
+              {expired && event.recap && (
+                <div className="mt-16">
+                  <h3 className="text-2xl font-bold mb-6">
+                    {event.recap.title}
+                  </h3>
+
+                  {/* Paragraphs */}
+                  <div className="space-y-4 text-gray-400">
+                    {event.recap.paragraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+
+                  {/* Photos */}
+                  <div className="grid md:grid-cols-3 gap-4 mt-8">
+                    {event.recap.photos.map((img, i) => (
+                      <img
+                        key={i}
+                        src={img}
+                        className="rounded-xl object-cover w-full h-48"
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
 
             </motion.div>
           </div>
@@ -96,19 +124,18 @@ export default function EventDetailsPage() {
           <div className="lg:col-span-1">
             <motion.div className="aws-card p-6 sticky top-32">
 
-              {/* 🔥 IF EXPIRED */}
               {expired ? (
                 <div className="text-center py-10">
                   <h3 className="text-xl font-bold text-gray-300 mb-2">
                     Event Completed 🎉
                   </h3>
                   <p className="text-gray-500">
-                    This event has already taken place.
+                    Registrations are closed for this event.
                   </p>
                 </div>
               ) : (
                 <>
-                  {/* 🔐 Unlock */}
+                  {/* Unlock */}
                   {!isUnlocked && (
                     <div className="mb-6 p-4 bg-[#0b0f1a]/80 rounded-xl border border-white/10 backdrop-blur-lg">
                       <p className="text-sm text-gray-400 mb-2">
@@ -141,10 +168,10 @@ export default function EventDetailsPage() {
                         <button
                           key={tab}
                           onClick={() => setActiveTab(tab as any)}
-                          className={`px-3 py-2 rounded-xl text-sm capitalize transition ${
+                          className={`px-3 py-2 rounded-xl text-sm capitalize ${
                             activeTab === tab
                               ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white'
-                              : 'bg-white/5 text-gray-300 hover:bg-white/10'
+                              : 'bg-white/5 text-gray-300'
                           }`}
                         >
                           {tab} {locked && "🔒"}
