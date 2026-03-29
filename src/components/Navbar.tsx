@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ FIXED: Event now includes id
+  // ✅ Updated for scroll navigation
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Event', path: '/event?id=event1' }, // 🔥 important fix
+    { name: 'Events', path: '#events' }, // 🔥 scroll target
   ];
 
   return (
@@ -34,13 +34,23 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="text-gray-300 hover:text-aws-orange transition-colors font-medium"
-              >
-                {link.name}
-              </Link>
+              link.path === '/' ? (
+                <Link
+                  key={link.name}
+                  to="/"
+                  className="text-gray-300 hover:text-aws-orange transition-colors font-medium"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.path}
+                  className="text-gray-300 hover:text-aws-orange transition-colors font-medium"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
 
@@ -67,14 +77,25 @@ export default function Navbar() {
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-gray-300 hover:text-aws-orange hover:bg-white/5 rounded-md"
-                >
-                  {link.name}
-                </Link>
+                link.path === '/' ? (
+                  <Link
+                    key={link.name}
+                    to="/"
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-4 text-base font-medium text-gray-300 hover:text-aws-orange hover:bg-white/5 rounded-md"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-4 text-base font-medium text-gray-300 hover:text-aws-orange hover:bg-white/5 rounded-md"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
             </div>
           </motion.div>
