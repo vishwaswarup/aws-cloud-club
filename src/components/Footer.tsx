@@ -1,4 +1,4 @@
-import { Cloud, Github, Linkedin, Twitter } from 'lucide-react';
+import { Cloud, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -66,21 +66,17 @@ export default function Footer() {
 
             <div className="flex space-x-4">
 
-              {/* Social Button */}
+              {/* Instagram */}
               <a
-                href="#"
-                className="p-2 rounded-xl bg-white/5 hover:bg-indigo-500/20 border border-white/10 hover:border-indigo-400/40 transition-all"
+                href="https://www.instagram.com/awscloudclub_muj/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-xl bg-white/5 hover:bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 border border-white/10 hover:border-pink-400/40 transition-all"
               >
-                <Twitter className="w-5 h-5 text-gray-300 hover:text-indigo-400" />
+                <Instagram className="w-5 h-5 text-gray-300 hover:text-white" />
               </a>
 
-              <a
-                href="#"
-                className="p-2 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 hover:border-purple-400/40 transition-all"
-              >
-                <Github className="w-5 h-5 text-gray-300 hover:text-purple-400" />
-              </a>
-
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/company/aws-cloud-club-muj/posts/"
                 target="_blank"
@@ -92,12 +88,13 @@ export default function Footer() {
 
             </div>
           </div>
+
         </div>
 
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>© 2026 AWS Cloud Club. All rights reserved.</p>
-          <p className="mt-4 md:mt-0">Built with ❤️ by AWS Cloud Club MUJ Team!</p>
+          <p className="mt-4 md:mt-0">Built with ❤️ by AWS Cloud Club - MUJ Team</p>
         </div>
 
       </div>
