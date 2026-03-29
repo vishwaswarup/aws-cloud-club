@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, User, ArrowLeft } from 'lucide-react';
 import { EVENTS } from '../constants';
-import { supabase } from '../lib/supabase';
 
 export default function EventDetailsPage() {
   const [searchParams] = useSearchParams();
@@ -12,37 +11,9 @@ export default function EventDetailsPage() {
 
   const [activeTab, setActiveTab] = useState<'meetup' | 'classes' | 'attendance'>('meetup');
 
-  // ✅ Supabase Classes State
-  const [classes, setClasses] = useState<any[]>([]);
-  const [loadingClasses, setLoadingClasses] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // ✅ Fetch classes from Supabase
-  useEffect(() => {
-    const fetchClasses = async () => {
-      if (!event?.id) return;
-
-      setLoadingClasses(true);
-
-      const { data, error } = await supabase
-        .from('classes')
-        .select('*')
-        .eq('event_id', event.id);
-
-      if (!error) {
-        setClasses(data || []);
-      } else {
-        console.error('Error fetching classes:', error);
-      }
-
-      setLoadingClasses(false);
-    };
-
-    fetchClasses();
-  }, [event?.id]);
 
   if (!event) {
     return (
@@ -57,6 +28,7 @@ export default function EventDetailsPage() {
     <div className="pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Back Button */}
         <Link to="/" className="inline-flex items-center space-x-2 text-gray-400 hover:text-aws-orange mb-12">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Events</span>
@@ -105,6 +77,7 @@ export default function EventDetailsPage() {
                       <img
                         src={speaker.image}
                         className="w-32 h-32 rounded-xl mx-auto mb-4 object-cover"
+                        alt={speaker.name}
                       />
                       <h4 className="font-bold">{speaker.name}</h4>
                       <p className="text-aws-orange text-sm">{speaker.designation}</p>
@@ -147,7 +120,7 @@ export default function EventDetailsPage() {
                   <h3 className="text-xl font-bold">Register</h3>
 
                   <a
-                    href={event.meetupLink || "https://www.meetup.com/aws-cloud-club-at-manipal-university-jaipur/events/313966432/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2&member_id=476898089"}
+                    href={event.meetupLink || "https://www.meetup.com/aws-cloud-club-at-manipal-university-jaipur/events/313966432/"}
                     target="_blank"
                     className="aws-button-primary w-full"
                   >
@@ -156,43 +129,38 @@ export default function EventDetailsPage() {
                 </div>
               )}
 
-              {/* Classes (Supabase Connected) */}
+              {/* Classes (Microsoft Form) */}
               {activeTab === 'classes' && (
                 <div>
-                  <h3 className="text-xl font-bold mb-4">Missed Classes</h3>
+                  <h3 className="text-xl font-bold mb-4">Submit Class Details</h3>
 
-                  {loadingClasses ? (
-                    <p className="text-gray-400">Loading...</p>
-                  ) : classes.length === 0 ? (
-                    <p className="text-gray-500">No classes found</p>
-                  ) : (
-                    <div className="space-y-4">
-                      {classes.map((cls) => (
-                        <div
-                          key={cls.id}
-                          className="bg-gray-800 p-4 rounded-lg border border-white/10"
-                        >
-                          <h4 className="font-semibold">{cls.title}</h4>
-                          <p className="text-sm text-gray-400">👨‍🏫 {cls.teacher}</p>
-                          <p className="text-sm text-gray-400">📅 {cls.date}</p>
+                  <p className="text-gray-400 text-sm mb-4">
+                    Fill this form to submit class name, teacher, and time.
+                  </p>
 
-                          {cls.recording && (
-                            <a
-                              href={cls.recording}
-                              target="_blank"
-                              className="text-aws-orange text-sm"
-                            >
-                              Watch Recording →
-                            </a>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="rounded-xl overflow-hidden border border-white/10">
+                    <iframe
+                      src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true"
+                      className="w-full h-[550px]"
+                      frameBorder="0"
+                      marginHeight={0}
+                      marginWidth={0}
+                    >
+                      Loading…
+                    </iframe>
+                  </div>
+
+                  <a
+                    href="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u"
+                    target="_blank"
+                    className="text-aws-orange text-sm mt-3 inline-block"
+                  >
+                    Open form in new tab →
+                  </a>
                 </div>
               )}
 
-              {/* Attendance */}
+              {/* Attendance (Microsoft Form) */}
               {activeTab === 'attendance' && (
                 <div>
                   <h3 className="text-xl font-bold mb-4">Mark Attendance</h3>
