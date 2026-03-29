@@ -119,7 +119,7 @@ export default function EventDetailsPage() {
                   <h3 className="text-xl font-bold">Register</h3>
 
                   <a
-                    href={event.meetupLink || "https://www.meetup.com/"}
+                    href={event.meetupLink || "https://www.meetup.com/aws-cloud-club-at-manipal-university-jaipur/events/313966432/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2&member_id=476898089"}
                     target="_blank"
                     className="aws-button-primary w-full"
                   >
@@ -144,7 +144,7 @@ export default function EventDetailsPage() {
                   <h3 className="text-xl font-bold mb-4">Mark Attendance</h3>
 
                   <iframe
-                    src="https://docs.google.com/forms/d/e/YOUR_REAL_FORM_ID/viewform?embedded=true"
+                    src="https://forms.office.com/r/W2j1X1awYu"
                     className="w-full h-[500px] rounded-lg"
                   />
                 </div>
