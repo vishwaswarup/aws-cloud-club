@@ -1,7 +1,7 @@
 import { useSearchParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, Clock, User, ArrowLeft } from 'lucide-react';
+import { Calendar, MapPin, Clock, ArrowLeft } from 'lucide-react';
 import { EVENTS } from '../constants';
 
 export default function EventDetailsPage() {
@@ -14,11 +14,11 @@ export default function EventDetailsPage() {
   // 🔐 Lock system
   const [accessCode, setAccessCode] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const CORRECT_CODE = "AWS2026";
 
   const handleUnlock = () => {
-    if (accessCode === CORRECT_CODE) {
+    if (accessCode.trim() === "AWS2026") {
       setIsUnlocked(true);
+      setActiveTab("classes"); // auto switch
     } else {
       alert("Invalid Code ❌");
     }
@@ -41,6 +41,7 @@ export default function EventDetailsPage() {
     <div className="pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Back */}
         <Link to="/" className="inline-flex items-center space-x-2 text-gray-400 hover:text-aws-orange mb-12">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Events</span>
@@ -79,7 +80,7 @@ export default function EventDetailsPage() {
           <div className="lg:col-span-1">
             <motion.div className="aws-card p-6 sticky top-32">
 
-              {/* 🔐 Unlock UI */}
+              {/* 🔐 Unlock */}
               {!isUnlocked && (
                 <div className="mb-6 p-4 bg-gray-900 rounded-lg border border-white/10">
                   <p className="text-sm text-gray-400 mb-2">
@@ -111,12 +112,12 @@ export default function EventDetailsPage() {
                   return (
                     <button
                       key={tab}
-                      onClick={() => !locked && setActiveTab(tab as any)}
+                      onClick={() => setActiveTab(tab as any)}
                       className={`px-3 py-2 rounded-lg text-sm capitalize ${
                         activeTab === tab
                           ? 'bg-aws-orange text-black'
                           : 'bg-gray-800 text-gray-300'
-                      } ${locked ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      }`}
                     >
                       {tab} {locked && "🔒"}
                     </button>
@@ -140,23 +141,43 @@ export default function EventDetailsPage() {
               )}
 
               {/* Classes */}
-              {activeTab === 'classes' && !isUnlocked ? (
-                <p className="text-gray-500">🔒 Enter code to access</p>
-              ) : activeTab === 'classes' && (
-                <iframe
-                  src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true"
-                  className="w-full h-[600px]"
-                />
+              {activeTab === 'classes' && (
+                <div>
+                  {!isUnlocked ? (
+                    <div className="text-center py-10">
+                      <p className="text-gray-400">
+                        🔒 Enter code to access Classes
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="rounded-xl overflow-hidden border border-white/10">
+                      <iframe
+                        src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true"
+                        className="w-full h-[600px]"
+                      />
+                    </div>
+                  )}
+                </div>
               )}
 
               {/* Attendance */}
-              {activeTab === 'attendance' && !isUnlocked ? (
-                <p className="text-gray-500">🔒 Enter code to access</p>
-              ) : activeTab === 'attendance' && (
-                <iframe
-                  src="https://forms.office.com/r/W2j1X1awYu?embed=true"
-                  className="w-full h-[600px]"
-                />
+              {activeTab === 'attendance' && (
+                <div>
+                  {!isUnlocked ? (
+                    <div className="text-center py-10">
+                      <p className="text-gray-400">
+                        🔒 Enter code to access Attendance
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="rounded-xl overflow-hidden border border-white/10">
+                      <iframe
+                        src="https://forms.office.com/r/W2j1X1awYu?embed=true"
+                        className="w-full h-[600px]"
+                      />
+                    </div>
+                  )}
+                </div>
               )}
 
             </motion.div>
