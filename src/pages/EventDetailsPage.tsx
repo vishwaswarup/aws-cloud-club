@@ -129,46 +129,33 @@ export default function EventDetailsPage() {
                 </div>
               )}
 
-              {/* Classes (Microsoft Form) */}
+              {/* Classes (Embedded Form ONLY) */}
               {activeTab === 'classes' && (
                 <div>
                   <h3 className="text-xl font-bold mb-4">Submit Class Details</h3>
 
-                  <p className="text-gray-400 text-sm mb-4">
-                    Fill this form to submit class name, teacher, and time.
-                  </p>
-
                   <div className="rounded-xl overflow-hidden border border-white/10">
                     <iframe
                       src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true"
-                      className="w-full h-[550px]"
+                      className="w-full h-[600px]"
                       frameBorder="0"
-                      marginHeight={0}
-                      marginWidth={0}
-                    >
-                      Loading…
-                    </iframe>
+                    />
                   </div>
-
-                  <a
-                    href="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u"
-                    target="_blank"
-                    className="text-aws-orange text-sm mt-3 inline-block"
-                  >
-                    Open form in new tab →
-                  </a>
                 </div>
               )}
 
-              {/* Attendance (Microsoft Form) */}
+              {/* Attendance (Embedded Form ONLY) */}
               {activeTab === 'attendance' && (
                 <div>
                   <h3 className="text-xl font-bold mb-4">Mark Attendance</h3>
 
-                  <iframe
-                    src="https://forms.office.com/r/W2j1X1awYu"
-                    className="w-full h-[500px] rounded-lg"
-                  />
+                  <div className="rounded-xl overflow-hidden border border-white/10">
+                    <iframe
+                      src="https://forms.office.com/r/W2j1X1awYu?embed=true"
+                      className="w-full h-[600px]"
+                      frameBorder="0"
+                    />
+                  </div>
                 </div>
               )}
 
