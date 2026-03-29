@@ -5,17 +5,17 @@ import { motion } from 'motion/react';
 
 export default function EventCard({ event, index }: { event: Event; index: number }) {
   return (
-    <Link to={`/event/${event.id}`} className="block">
+    <Link to={`/event/${event.id}`} className="block h-full">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.04, y: -4 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1 }}
-        className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500 bg-[length:200%_200%] animate-gradient"
+        className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500 bg-[length:200%_200%] animate-gradient h-full"
       >
         {/* Inner Card */}
-        <div className="rounded-2xl bg-[#0b0f1a]/90 backdrop-blur-xl p-8 border border-white/10 transition-all duration-300 group-hover:shadow-[0_0_50px_rgba(99,102,241,0.4)]">
+        <div className="rounded-2xl bg-[#0b0f1a]/90 backdrop-blur-xl p-8 border border-white/10 transition-all duration-300 group-hover:shadow-[0_0_50px_rgba(99,102,241,0.4)] flex flex-col h-full min-h-[280px]">
 
           {/* Date */}
           <div className="flex items-center space-x-2 text-indigo-400 mb-4">
@@ -24,12 +24,12 @@ export default function EventCard({ event, index }: { event: Event; index: numbe
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl font-bold mb-4 transition-all duration-300 group-hover:text-indigo-300">
+          <h3 className="text-2xl font-bold mb-4 transition-all duration-300 group-hover:text-indigo-300 min-h-[3rem]">
             {event.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-400 mb-6 line-clamp-2">
+          <p className="text-gray-400 mb-6 line-clamp-2 min-h-[3rem]">
             {event.shortDescription}
           </p>
 
@@ -46,8 +46,8 @@ export default function EventCard({ event, index }: { event: Event; index: numbe
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="flex items-center space-x-2 text-indigo-400 font-semibold group/btn">
+          {/* CTA (always bottom) */}
+          <div className="mt-auto flex items-center space-x-2 text-indigo-400 font-semibold group/btn">
             <span>View Details</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
           </div>
