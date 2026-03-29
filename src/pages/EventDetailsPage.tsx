@@ -1,24 +1,22 @@
-import { useSearchParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, MapPin, Clock, ArrowLeft } from 'lucide-react';
 import { EVENTS } from '../constants';
 
 export default function EventDetailsPage() {
-  const [searchParams] = useSearchParams();
-  const eventId = searchParams.get('id');
-  const event = EVENTS.find((e) => e.id === eventId);
+  const { id } = useParams(); // ✅ FIXED
+  const event = EVENTS.find((e) => e.id === id);
 
   const [activeTab, setActiveTab] = useState<'meetup' | 'classes' | 'attendance'>('meetup');
 
-  // 🔐 Lock system
   const [accessCode, setAccessCode] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   const handleUnlock = () => {
     if (accessCode.trim() === "AWS2026") {
       setIsUnlocked(true);
-      setActiveTab("classes"); // auto switch
+      setActiveTab("classes");
     } else {
       alert("Invalid Code ❌");
     }
@@ -41,7 +39,6 @@ export default function EventDetailsPage() {
     <div className="pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Back */}
         <Link to="/" className="inline-flex items-center space-x-2 text-gray-400 hover:text-aws-orange mb-12">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Events</span>
@@ -80,7 +77,6 @@ export default function EventDetailsPage() {
           <div className="lg:col-span-1">
             <motion.div className="aws-card p-6 sticky top-32">
 
-              {/* 🔐 Unlock */}
               {!isUnlocked && (
                 <div className="mb-6 p-4 bg-gray-900 rounded-lg border border-white/10">
                   <p className="text-sm text-gray-400 mb-2">
@@ -95,16 +91,12 @@ export default function EventDetailsPage() {
                     className="aws-input mb-2"
                   />
 
-                  <button
-                    onClick={handleUnlock}
-                    className="aws-button-primary w-full"
-                  >
+                  <button onClick={handleUnlock} className="aws-button-primary w-full">
                     Unlock 🔓
                   </button>
                 </div>
               )}
 
-              {/* Tabs */}
               <div className="flex gap-2 mb-6">
                 {['meetup', 'classes', 'attendance'].map((tab) => {
                   const locked = !isUnlocked && tab !== 'meetup';
@@ -125,59 +117,20 @@ export default function EventDetailsPage() {
                 })}
               </div>
 
-              {/* Meetup */}
               {activeTab === 'meetup' && (
-                <div className="text-center space-y-4">
-                  <h3 className="text-xl font-bold">Register</h3>
-
-                  <a
-                    href={event.meetupLink || "https://www.meetup.com/aws-cloud-club-at-manipal-university-jaipur/events/313966432/"}
-                    target="_blank"
-                    className="aws-button-primary w-full"
-                  >
-                    Register on Meetup 🚀
-                  </a>
-                </div>
+                <a href={event.meetupLink} target="_blank" className="aws-button-primary w-full">
+                  Register on Meetup 🚀
+                </a>
               )}
 
-              {/* Classes */}
               {activeTab === 'classes' && (
-                <div>
-                  {!isUnlocked ? (
-                    <div className="text-center py-10">
-                      <p className="text-gray-400">
-                        🔒 Enter code to access Classes
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="rounded-xl overflow-hidden border border-white/10">
-                      <iframe
-                        src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true"
-                        className="w-full h-[600px]"
-                      />
-                    </div>
-                  )}
-                </div>
+                !isUnlocked ? <p>🔒 Enter code</p> :
+                <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=3S8oJwtM-026kSKM2D_fcRezTgSnBGVIthb_f4OG52FUNkJNVkpMSjY0ODMwRjhTOUJYMzA2SkVLVC4u&embed=true" className="w-full h-[600px]" />
               )}
 
-              {/* Attendance */}
               {activeTab === 'attendance' && (
-                <div>
-                  {!isUnlocked ? (
-                    <div className="text-center py-10">
-                      <p className="text-gray-400">
-                        🔒 Enter code to access Attendance
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="rounded-xl overflow-hidden border border-white/10">
-                      <iframe
-                        src="https://forms.office.com/r/W2j1X1awYu?embed=true"
-                        className="w-full h-[600px]"
-                      />
-                    </div>
-                  )}
-                </div>
+                !isUnlocked ? <p>🔒 Enter code</p> :
+                <iframe src="https://forms.office.com/r/W2j1X1awYu?embed=true" className="w-full h-[600px]" />
               )}
 
             </motion.div>
