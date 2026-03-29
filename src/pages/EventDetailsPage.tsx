@@ -67,6 +67,7 @@ export default function EventDetailsPage() {
                 {event.title}
               </h1>
 
+              {/* Meta */}
               <div className="flex flex-wrap gap-6 mb-12 text-gray-300">
                 <div className="flex items-center space-x-2">
                   <Calendar className="w-5 h-5 text-indigo-400" />
@@ -85,12 +86,12 @@ export default function EventDetailsPage() {
               {/* Description */}
               <div className="mb-16">
                 <h3 className="text-2xl font-bold mb-4">About the Event</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">
+                <p className="text-gray-400 text-lg leading-relaxed whitespace-pre-line break-words">
                   {event.fullDescription}
                 </p>
               </div>
 
-              {/* 🔥 RECAP + PHOTOS FOR PAST EVENTS */}
+              {/* 🔥 RECAP + PHOTOS (PAST EVENTS ONLY) */}
               {expired && event.recap && (
                 <div className="mt-16">
                   <h3 className="text-2xl font-bold mb-6">
