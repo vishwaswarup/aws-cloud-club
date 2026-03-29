@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link } from 'react-router-dom';
+
+<Link to="/meetup">Meetup</Link>
+<Link to="/classes">Classes</Link>
+<Link to="/attendance">Attendance</Link>
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
