@@ -1,17 +1,20 @@
 @import "tailwindcss";
 
+/* 🎨 THEME COLORS (UPDATED) */
 @theme {
-  --color-aws-orange: #FF9900;
-  --color-aws-dark: #232F3E;
-  --color-aws-black: #000000;
-  --color-aws-white: #FFFFFF;
-  --color-aws-gray: #F2F3F3;
-  
+  --color-primary-indigo: #6366F1;
+  --color-primary-purple: #8B5CF6;
+  --color-primary-blue: #3B82F6;
+
+  --color-bg-dark: #050816;
+  --color-bg-deep: #020617;
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* 🌌 GLOBAL BACKGROUND */
 :root {
-  background-color: #000000;
+  background-color: #050816;
   color: #FFFFFF;
 }
 
@@ -19,31 +22,66 @@ body {
   @apply font-sans antialiased;
 }
 
+/* 🔥 GRADIENT (NEW PRIMARY STYLE) */
 .aws-gradient {
-  background: linear-gradient(135deg, #FF9900 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #3B82F6 100%);
 }
 
+/* 💎 CARD (GLASS + PREMIUM) */
 .aws-card {
-  @apply bg-aws-dark border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-aws-orange/50 hover:shadow-[0_0_20px_rgba(255,153,0,0.1)];
+  @apply bg-[#0b0f1a]/80 backdrop-blur-xl border border-white/10 rounded-2xl 
+  transition-all duration-300 
+  hover:border-indigo-400/40 
+  hover:shadow-[0_0_40px_rgba(99,102,241,0.25)];
 }
 
+/* 🔘 BUTTON BASE */
 .aws-button {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 
+  disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
+/* 🔥 PRIMARY BUTTON (BLUE–PURPLE GRADIENT) */
 .aws-button-primary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-black hover:scale-105 active:scale-95;
-  background: linear-gradient(135deg, #FF9900 0%, #FFB84D 100%);
+  @apply px-6 py-3 rounded-xl font-semibold text-white 
+  transition-all duration-300 
+  hover:scale-105 active:scale-95 shadow-lg;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #3B82F6 100%);
 }
 
+/* ✨ SECONDARY BUTTON */
 .aws-button-secondary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-aws-orange text-aws-orange hover:bg-aws-orange/10;
+  @apply px-6 py-3 rounded-xl font-semibold 
+  border border-indigo-400 text-indigo-400 
+  hover:bg-indigo-500/10 transition-all duration-300;
 }
 
+/* 🧾 INPUT (GLASS STYLE) */
 .aws-input {
-  @apply w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-aws-orange transition-colors;
+  @apply w-full bg-[#0b0f1a]/70 backdrop-blur-lg 
+  border border-white/20 rounded-xl px-4 py-3 
+  focus:outline-none focus:border-indigo-400 
+  transition-colors;
 }
 
+/* 🏷 LABEL */
 .aws-label {
   @apply block text-sm font-medium text-gray-400 mb-2;
+}
+
+/* ✨ SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🔥 OPTIONAL: ANIMATED GRADIENT (ADVANCED) */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 6s ease infinite;
 }
