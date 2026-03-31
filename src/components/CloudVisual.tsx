@@ -26,6 +26,18 @@ const awsIcons = [
   { name: "CloudWatch", file: "cloudwatch" },
   { name: "IAM", file: "iam" },
   { name: "Route 53", file: "route53" },
+  { name: "Elastic Load Balancing", file: "aww" },
+  { name: "ElastiCache", file: "elasticache" },
+  { name: "Supply Chain", file: "supplychain" },
+  { name: "App Stream", file: "appstream" },
+  { name: "Marketplace", file: "mplight" },
+  { name: "Backup", file: "backup" },
+  { name: "Sumerian", file: "sumerian" },
+  { name: "Shield", file: "shield" },
+  { name: "Transit Gateway", file: "trangateway" },
+  { name: "Client VPN", file: "clientvpn" },
+  { name: "OPSWorks", file: "opsworks" }
+  
 ];
 
 export default function CloudVisual() {
