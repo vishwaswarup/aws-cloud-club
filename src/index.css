@@ -1,87 +1,76 @@
 @import "tailwindcss";
 
-/* 🎨 THEME COLORS (UPDATED) */
+/* 🎨 AWS THEME */
 @theme {
-  --color-primary-indigo: #6366F1;
-  --color-primary-purple: #8B5CF6;
-  --color-primary-blue: #3B82F6;
-
-  --color-bg-dark: #050816;
-  --color-bg-deep: #020617;
+  --color-aws-orange: #FF9900;
+  --color-aws-bg: #0b0f14;
+  --color-aws-surface: #161b22;
+  --color-aws-border: rgba(255,255,255,0.08);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* 🌌 GLOBAL BACKGROUND */
+/* 🌌 GLOBAL */
 :root {
-  background-color: #050816;
-  color: #FFFFFF;
+  background-color: #0b0f14;
+  color: #ffffff;
 }
 
 body {
-  @apply font-sans antialiased;
+  @apply font-sans antialiased bg-[#0b0f14];
 }
 
-/* 🔥 GRADIENT (NEW PRIMARY STYLE) */
-.aws-gradient {
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #3B82F6 100%);
-}
-
-/* 💎 CARD (GLASS + PREMIUM) */
+/* 📦 CARD (AWS STYLE) */
 .aws-card {
-  @apply bg-[#0b0f1a]/80 backdrop-blur-xl border border-white/10 rounded-2xl 
-  transition-all duration-300 
-  hover:border-indigo-400/40 
-  hover:shadow-[0_0_40px_rgba(99,102,241,0.25)];
+  @apply bg-[#161b22] border border-white/10 rounded-lg 
+  shadow-sm transition-all duration-200;
+}
+
+.aws-card:hover {
+  @apply border-white/20;
 }
 
 /* 🔘 BUTTON BASE */
 .aws-button {
-  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 
-  disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply px-5 py-2.5 rounded-md font-medium transition-all duration-200;
 }
 
-/* 🔥 PRIMARY BUTTON (BLUE–PURPLE GRADIENT) */
+/* 🔥 PRIMARY BUTTON (AWS ORANGE) */
 .aws-button-primary {
-  @apply px-6 py-3 rounded-xl font-semibold text-white 
-  transition-all duration-300 
-  hover:scale-105 active:scale-95 shadow-lg;
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #3B82F6 100%);
+  @apply px-5 py-2.5 rounded-md font-medium text-black;
+  background-color: #FF9900;
+}
+
+.aws-button-primary:hover {
+  background-color: #ffad33;
 }
 
 /* ✨ SECONDARY BUTTON */
 .aws-button-secondary {
-  @apply px-6 py-3 rounded-xl font-semibold 
-  border border-indigo-400 text-indigo-400 
-  hover:bg-indigo-500/10 transition-all duration-300;
+  @apply px-5 py-2.5 rounded-md font-medium border border-white/20 text-gray-300;
 }
 
-/* 🧾 INPUT (GLASS STYLE) */
+.aws-button-secondary:hover {
+  @apply bg-white/5;
+}
+
+/* 🧾 INPUT */
 .aws-input {
-  @apply w-full bg-[#0b0f1a]/70 backdrop-blur-lg 
-  border border-white/20 rounded-xl px-4 py-3 
-  focus:outline-none focus:border-indigo-400 
-  transition-colors;
+  @apply w-full bg-[#0d1117] border border-white/10 rounded-md px-3 py-2 
+  focus:outline-none focus:border-[#FF9900] text-sm;
 }
 
 /* 🏷 LABEL */
 .aws-label {
-  @apply block text-sm font-medium text-gray-400 mb-2;
+  @apply block text-xs font-medium text-gray-400 mb-1;
 }
 
-/* ✨ SMOOTH SCROLL */
+/* 🔗 LINKS */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* ✨ SCROLL */
 html {
   scroll-behavior: smooth;
-}
-
-/* 🔥 OPTIONAL: ANIMATED GRADIENT (ADVANCED) */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientMove 6s ease infinite;
 }
