@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Menu, X, Cloud } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import CloudNetworkLogo from "../components/CloudNetworkLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,15 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-14 relative">
 
-          {/* LEFT - AWS Logo */}
+          {/* LEFT - Animated AWS Logo */}
           <Link
             to="/"
             onClick={handleHomeClick}
             className="flex items-center gap-2"
           >
-            <Cloud className="w-4.5 h-4.5 text-[#FF9900]/90" />
+            {/* 🔥 REPLACED ICON */}
+            <CloudNetworkLogo />
+
             <span className="text-sm font-medium tracking-tight">
               AWS <span className="text-[#FF9900]">Cloud Club MUJ</span>
             </span>
@@ -63,9 +66,9 @@ export default function Navbar() {
           {/* RIGHT - MUJ LOGO */}
           <div className="flex items-center">
             <img
-              src="/images/manipalpnglogo.png" // 🔥 place image in public/images
+              src="/images/manipalpnglogo.png"
               alt="MUJ Logo"
-              className="h-7 w-auto opacity-80 hover:opacity-100 transition"
+              className="h-7 w-auto opacity-70 hover:opacity-100 transition duration-200"
             />
           </div>
 
