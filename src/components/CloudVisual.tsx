@@ -1,6 +1,17 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
+type NodeType = {
+  id: number;
+  icon: string;
+  name: string;
+  x: number;
+  y: number;
+  dx: number;
+  dy: number;
+  size: number;
+};
+
 const awsIcons = [
   { name: "EC2", file: "ec2" },
   { name: "Lambda", file: "lambda" },
@@ -15,25 +26,13 @@ const awsIcons = [
   { name: "CloudWatch", file: "cloudwatch" },
   { name: "IAM", file: "iam" },
   { name: "Route 53", file: "route53" },
-  { name: "Elastic Load Balancing", file: "aww" },
-  { name: "ElastiCache", file: "elasticache" },
-  { name: "Supply Chain", file: "supplychain" },
-  { name: "App Stream", file: "appstream" },
-  { name: "Marketplace", file: "mplight" },
-  { name: "Backup", file: "backup" },
-  { name: "Sumerian", file: "sumerian" },
-  { name: "Shield", file: "shield" },
-  { name: "Transit Gateway", file: "trangateway" },
-  { name: "Client VPN", file: "clientvpn" },
-  { name: "OPSWorks", file: "opsworks" }
-  
 ];
 
 export default function CloudVisual() {
-  const [nodes, setNodes] = useState<any[]>([]);
+  const [nodes, setNodes] = useState<NodeType[]>([]);
   const [hovered, setHovered] = useState<number | null>(null);
 
-  // 🔥 INITIAL RANDOM DISTRIBUTION (BETTER SPREAD)
+  // 🔥 INIT
   useEffect(() => {
     const generated = awsIcons.map((icon, i) => ({
       id: i,
@@ -41,88 +40,86 @@ export default function CloudVisual() {
       name: icon.name,
       x: Math.random() * 80 + 10,
       y: Math.random() * 80 + 10,
-      dx: (Math.random() - 0.5) * 0.15,
-      dy: (Math.random() - 0.5) * 0.15,
-      size: 32 + Math.random() * 8, // 🔥 BIGGER ICONS
+      dx: (Math.random() - 0.5) * 0.2,
+      dy: (Math.random() - 0.5) * 0.2,
+      size: 36,
     }));
 
     setNodes(generated);
   }, []);
 
-  // 🔁 SMOOTH RANDOM MOVEMENT
+  // 🔁 MOVEMENT + REPULSION
   useEffect(() => {
-  const interval = setInterval(() => {
-    setNodes(prev => {
-      const updated = prev.map(n => ({ ...n }));
+    const interval = setInterval(() => {
+      setNodes(prev => {
+        const updated = prev.map(n => ({ ...n }));
 
-      // 🔁 Move nodes
-      for (let i = 0; i < updated.length; i++) {
-        let n = updated[i];
+        // 🔁 Move + wall bounce
+        updated.forEach(n => {
+          n.x += n.dx;
+          n.y += n.dy;
 
-        n.x += n.dx;
-        n.y += n.dy;
+          if (n.x < 8 || n.x > 92) n.dx *= -1;
+          if (n.y < 8 || n.y > 92) n.dy *= -1;
+        });
 
-        // 🧱 Wall bounce
-        if (n.x < 8 || n.x > 92) n.dx *= -1;
-        if (n.y < 8 || n.y > 92) n.dy *= -1;
-      }
+        // 💥 SOFT REPULSION (KEY FIX)
+        for (let i = 0; i < updated.length; i++) {
+          for (let j = i + 1; j < updated.length; j++) {
+            const a = updated[i];
+            const b = updated[j];
 
-      // 💥 Collision detection
-      for (let i = 0; i < updated.length; i++) {
-        for (let j = i + 1; j < updated.length; j++) {
-          const a = updated[i];
-          const b = updated[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+            const minDist = 12; // 🔥 bigger = no merging
 
-          const minDist = 6; // 🔥 tweak this for spacing
+            if (dist < minDist) {
+              const angle = Math.atan2(dy, dx);
 
-          if (dist < minDist) {
-            // 👉 simple bounce (swap direction)
-            const tempDx = a.dx;
-            const tempDy = a.dy;
+              const force = (minDist - dist) * 0.04;
 
-            a.dx = b.dx;
-            a.dy = b.dy;
+              a.dx += Math.cos(angle) * force;
+              a.dy += Math.sin(angle) * force;
 
-            b.dx = tempDx;
-            b.dy = tempDy;
-
-            // 👉 push apart (prevents sticking)
-            a.x += a.dx * 2;
-            a.y += a.dy * 2;
-
-            b.x += b.dx * 2;
-            b.y += b.dy * 2;
+              b.dx -= Math.cos(angle) * force;
+              b.dy -= Math.sin(angle) * force;
+            }
           }
         }
-      }
 
-      return updated;
-    });
-  }, 50);
+        // 🧊 Clamp speed (VERY IMPORTANT)
+        const maxSpeed = 0.5;
 
-  return () => clearInterval(interval);
-}, []);
+        updated.forEach(n => {
+          n.dx = Math.max(Math.min(n.dx, maxSpeed), -maxSpeed);
+          n.dy = Math.max(Math.min(n.dy, maxSpeed), -maxSpeed);
+        });
+
+        return updated;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative w-full h-[460px] rounded-xl bg-[#0b0f14] border border-white/10 overflow-hidden">
 
-      {/* 🌫 glow */}
+      {/* glow */}
       <div className="absolute inset-0">
         <div className="absolute w-96 h-96 bg-[#FF9900]/10 blur-[140px] rounded-full top-1/3 left-1/4" />
         <div className="absolute w-96 h-96 bg-blue-500/10 blur-[140px] rounded-full bottom-1/3 right-1/4" />
       </div>
 
-      {/* 🔗 DYNAMIC CONNECTION LINES */}
+      {/* 🔗 CONNECTIONS */}
       <svg className="absolute inset-0 w-full h-full">
         {nodes.map((a, i) =>
           nodes.slice(i + 1).map((b, j) => {
             const dist = Math.hypot(a.x - b.x, a.y - b.y);
 
-            if (dist < 22) {
+            if (dist < 25) {
               return (
                 <line
                   key={`${i}-${j}`}
@@ -130,8 +127,8 @@ export default function CloudVisual() {
                   y1={`${a.y}%`}
                   x2={`${b.x}%`}
                   y2={`${b.y}%`}
-                  stroke="rgba(255,153,0,0.18)"
-                  strokeWidth="1.2"
+                  stroke="rgba(255,153,0,0.2)"
+                  strokeWidth="1.3"
                 />
               );
             }
@@ -152,38 +149,33 @@ export default function CloudVisual() {
           }}
           onHoverStart={() => setHovered(node.id)}
           onHoverEnd={() => setHovered(null)}
-          animate={{
-            scale: [1, 1.08, 1],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-          }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 3, repeat: Infinity }}
         >
-          {/* ICON */}
           <img
             src={node.icon}
             onError={(e: any) => (e.currentTarget.style.display = "none")}
-            className="opacity-95"
             style={{
               width: node.size,
-              filter: "drop-shadow(0 0 10px rgba(255,153,0,0.35))",
+              filter: "drop-shadow(0 0 12px rgba(255,153,0,0.4))",
             }}
           />
 
-          {/* TOOLTIP */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-xs rounded bg-[#161b22] border border-white/10 text-gray-300 whitespace-nowrap
+            className={`absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-xs rounded bg-[#161b22] border border-white/10 text-gray-300
             transition-all duration-200
-            ${hovered === node.id ? "opacity-100 translate-y-2" : "opacity-0 pointer-events-none"}
-            `}
+            ${
+              hovered === node.id
+                ? "opacity-100 translate-y-2"
+                : "opacity-0 pointer-events-none"
+            }`}
           >
             {node.name}
           </div>
         </motion.div>
       ))}
 
-      {/* ⚡ subtle scanning line */}
+      {/* scan line */}
       <motion.div
         className="absolute h-[1px] bg-gradient-to-r from-transparent via-[#FF9900]/40 to-transparent w-[150%]"
         style={{ top: "50%", left: "-25%" }}
