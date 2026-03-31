@@ -16,13 +16,8 @@ export default function LandingPage() {
       <section className="py-16 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 text-center">
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#161b22] border border-white/10 text-xs text-gray-400 mb-6">
-            <Cloud className="w-3.5 h-3.5 text-[#FF9900]" />
-            AWS Cloud Club MUJ
-          </div>
-
           <h1 className="text-3xl md:text-5xl font-semibold mb-5 tracking-tight leading-tight">
-            Build on <span className="text-[#FF9900]">AWS Cloud</span> with MUJ
+            <span className="text-[#FF9900]">AWS Cloud Club - MUJ</span>
           </h1>
 
           <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
