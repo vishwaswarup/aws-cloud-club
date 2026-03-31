@@ -123,8 +123,10 @@ export default function EventDetailsPage() {
             )}
           </div>
 
-          {/* RIGHT PANEL */}
-          <div>
+          {/* RIGHT */}
+          <div className="space-y-6">
+
+            {/* MAIN PANEL */}
             <div className="bg-[#161b22] border border-white/10 rounded-md p-4 sticky top-24">
 
               {expired ? (
@@ -210,6 +212,46 @@ export default function EventDetailsPage() {
                 </>
               )}
             </div>
+
+            {/* 🔥 STEPS SECTION */}
+            {!expired && (
+              <div className="bg-[#161b22] border border-white/10 rounded-md p-4">
+
+                <h3 className="text-sm font-medium mb-3 text-white">
+                  Steps to Access
+                </h3>
+
+                <div className="space-y-2 text-xs text-gray-400">
+
+                  <div className="flex gap-2">
+                    <span className="text-[#FF9900] font-medium">1.</span>
+                    <p>Register on Meetup</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <span className="text-[#FF9900] font-medium">2.</span>
+                    <p>Get the code for class attendance</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <span className="text-[#FF9900] font-medium">3.</span>
+                    <p>Enter the code in the textbox</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <span className="text-[#FF9900] font-medium">4.</span>
+                    <p>Unlock the classes</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <span className="text-[#FF9900] font-medium">5.</span>
+                    <p>Fill the form and get attendance</p>
+                  </div>
+
+                </div>
+              </div>
+            )}
+
           </div>
 
         </div>
