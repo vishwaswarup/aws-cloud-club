@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* 🔤 AWS EMBER FONT */
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/AWSEmber-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/AWSEmber-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/AWSEmber-Bold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* 🎨 AWS-INSPIRED THEME (REFINED) */
 @theme {
   --color-aws-orange: #FF9900;
@@ -8,7 +30,8 @@
   --color-aws-surface-hover: #1c2128;
   --color-aws-border: rgba(255,255,255,0.08);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* ✅ UPDATED FONT */
+  --font-sans: "AWS Ember", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* 🌌 GLOBAL */
@@ -18,12 +41,17 @@
 }
 
 body {
-  @apply font-sans antialiased bg-[#0b0f14];
+  font-family: "AWS Ember", system-ui, sans-serif;
+  @apply antialiased bg-[#0b0f14];
+
+  /* 🔥 subtle AWS feel */
+  letter-spacing: -0.01em;
 }
 
 /* ✨ TYPOGRAPHY TWEAKS */
 h1, h2, h3 {
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 /* 📦 CARD (SUBTLE DEPTH) */
