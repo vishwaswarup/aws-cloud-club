@@ -39,23 +39,61 @@ export default function CloudVisual() {
 
   // 🔁 SMOOTH RANDOM MOVEMENT
   useEffect(() => {
-    const interval = setInterval(() => {
-      setNodes(prev =>
-        prev.map(n => {
-          let x = n.x + n.dx;
-          let y = n.y + n.dy;
+  const interval = setInterval(() => {
+    setNodes(prev => {
+      const updated = prev.map(n => ({ ...n }));
 
-          // bounce edges
-          if (x < 8 || x > 92) n.dx *= -1;
-          if (y < 8 || y > 92) n.dy *= -1;
+      // 🔁 Move nodes
+      for (let i = 0; i < updated.length; i++) {
+        let n = updated[i];
 
-          return { ...n, x, y };
-        })
-      );
-    }, 50);
+        n.x += n.dx;
+        n.y += n.dy;
 
-    return () => clearInterval(interval);
-  }, []);
+        // 🧱 Wall bounce
+        if (n.x < 8 || n.x > 92) n.dx *= -1;
+        if (n.y < 8 || n.y > 92) n.dy *= -1;
+      }
+
+      // 💥 Collision detection
+      for (let i = 0; i < updated.length; i++) {
+        for (let j = i + 1; j < updated.length; j++) {
+          const a = updated[i];
+          const b = updated[j];
+
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          const minDist = 6; // 🔥 tweak this for spacing
+
+          if (dist < minDist) {
+            // 👉 simple bounce (swap direction)
+            const tempDx = a.dx;
+            const tempDy = a.dy;
+
+            a.dx = b.dx;
+            a.dy = b.dy;
+
+            b.dx = tempDx;
+            b.dy = tempDy;
+
+            // 👉 push apart (prevents sticking)
+            a.x += a.dx * 2;
+            a.y += a.dy * 2;
+
+            b.x += b.dx * 2;
+            b.y += b.dy * 2;
+          }
+        }
+      }
+
+      return updated;
+    });
+  }, 50);
+
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <div className="relative w-full h-[460px] rounded-xl bg-[#0b0f14] border border-white/10 overflow-hidden">
