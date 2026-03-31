@@ -1,112 +1,117 @@
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 
-const icons = [
-  "/aws/aws.svg",
-  "/aws/ec2.svg",
-  "/aws/s3.svg",
-  "/aws/lambda.svg",
-  "/aws/rds.svg",
-  "/aws/apigateway.svg",
-  "/aws/cloudfront.svg",
-  "/aws/vpc.svg",
-  "/aws/dynamodb.svg",
-  "/aws/sqs.svg",
-  "/aws/sns.svg",
-  "/aws/cloudwatch.svg",
+const nodes = [
+  // TOP
+  { id: "cf", x: 50, y: 10, icon: "/aws/cloudfront.svg" },
+
+  // MID TOP
+  { id: "api", x: 50, y: 25, icon: "/aws/apigateway.svg" },
+
+  // COMPUTE LAYER
+  { id: "lambda", x: 25, y: 45, icon: "/aws/lambda.svg" },
+  { id: "ec2", x: 50, y: 45, icon: "/aws/ec2.svg" },
+  { id: "ecs", x: 75, y: 45, icon: "/aws/ecs.svg" },
+
+  // DATA LAYER
+  { id: "s3", x: 25, y: 65, icon: "/aws/s3.svg" },
+  { id: "rds", x: 50, y: 65, icon: "/aws/rds.svg" },
+  { id: "ddb", x: 75, y: 65, icon: "/aws/dynamodb.svg" },
+
+  // CORE
+  { id: "vpc", x: 40, y: 85, icon: "/aws/vpc.svg" },
+  { id: "iam", x: 60, y: 85, icon: "/aws/iam.svg" },
+];
+
+const connections = [
+  ["cf", "api"],
+
+  ["api", "lambda"],
+  ["api", "ec2"],
+  ["api", "ecs"],
+
+  ["lambda", "s3"],
+  ["ec2", "rds"],
+  ["ecs", "ddb"],
+
+  ["s3", "vpc"],
+  ["rds", "vpc"],
+  ["ddb", "vpc"],
+
+  ["vpc", "iam"],
 ];
 
 export default function CloudVisual() {
-  const [nodes, setNodes] = useState<any[]>([]);
-
-  // 🔥 INITIAL RANDOM NODES (FULL SPACE)
-  useEffect(() => {
-    const generated = icons.map((icon, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      dx: (Math.random() - 0.5) * 0.2,
-      dy: (Math.random() - 0.5) * 0.2,
-      icon,
-    }));
-    setNodes(generated);
-  }, []);
-
-  // 🔥 FLOATING MOTION
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNodes((prev) =>
-        prev.map((n) => {
-          let x = n.x + n.dx;
-          let y = n.y + n.dy;
-
-          if (x < 3 || x > 97) n.dx *= -1;
-          if (y < 3 || y > 97) n.dy *= -1;
-
-          return { ...n, x, y };
-        })
-      );
-    }, 40);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative w-full h-[420px] rounded-md border border-white/10 bg-[#161b22] overflow-hidden">
+    <div className="relative w-full h-[420px] bg-[#161b22] border border-white/10 rounded-md overflow-hidden">
 
-      {/* 🔥 CONNECTION WEB */}
+      {/* CONNECTION LINES */}
       <svg className="absolute inset-0 w-full h-full">
-        {nodes.map((a, i) =>
-          nodes.slice(i + 1).map((b, j) => {
-            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        {connections.map(([a, b], i) => {
+          const nodeA = nodes.find((n) => n.id === a);
+          const nodeB = nodes.find((n) => n.id === b);
 
-            if (dist < 22) {
-              return (
-                <line
-                  key={`${i}-${j}`}
-                  x1={`${a.x}%`}
-                  y1={`${a.y}%`}
-                  x2={`${b.x}%`}
-                  y2={`${b.y}%`}
-                  stroke="rgba(255,153,0,0.18)"
-                  strokeWidth="0.7"
-                />
-              );
-            }
-            return null;
-          })
+          return (
+            <line
+              key={i}
+              x1={`${nodeA.x}%`}
+              y1={`${nodeA.y}%`}
+              x2={`${nodeB.x}%`}
+              y2={`${nodeB.y}%`}
+              stroke="rgba(255,153,0,0.2)"
+              strokeWidth="1"
+            />
+          );
+        })}
+
+        {/* EXTRA WEB (cross links for density) */}
+        {nodes.map((a, i) =>
+          nodes.slice(i + 1).map((b, j) => (
+            <line
+              key={`mesh-${i}-${j}`}
+              x1={`${a.x}%`}
+              y1={`${a.y}%`}
+              x2={`${b.x}%`}
+              y2={`${b.y}%`}
+              stroke="rgba(255,255,255,0.04)"
+              strokeWidth="0.5"
+            />
+          ))
         )}
       </svg>
 
-      {/* 🔥 NODES */}
+      {/* NODES */}
       {nodes.map((node, i) => (
-        <motion.img
+        <motion.div
           key={node.id}
-          src={node.icon}
-          className={`absolute ${
-            i === 0 ? "w-10" : "w-7"
-          } opacity-90 hover:opacity-100`}
+          className="absolute"
           style={{
             left: `${node.x}%`,
             top: `${node.y}%`,
             transform: "translate(-50%, -50%)",
           }}
-          animate={{
-            scale: [1, 1.08, 1],
-          }}
+          animate={{ y: [0, -4, 0] }}
           transition={{
-            duration: 3 + i * 0.2,
+            duration: 3 + i * 0.3,
             repeat: Infinity,
           }}
-        />
+        >
+          <img
+            src={node.icon}
+            className="w-8 opacity-90 hover:opacity-100"
+            style={{
+              filter: "drop-shadow(0 0 6px rgba(255,153,0,0.25))",
+            }}
+          />
+        </motion.div>
       ))}
 
-      {/* 🔥 SUBTLE CENTER GLOW */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 w-40 h-40 border border-[#FF9900]/10 rounded-full"
-        style={{ transform: "translate(-50%, -50%)" }}
-        animate={{ scale: [1, 1.6], opacity: [0.2, 0] }}
-        transition={{ duration: 3, repeat: Infinity }}
+      {/* CENTER AWS (SUBTLE) */}
+      <motion.img
+        src="/aws/aws.svg"
+        className="absolute w-12 opacity-20"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 4, repeat: Infinity }}
       />
     </div>
   );
