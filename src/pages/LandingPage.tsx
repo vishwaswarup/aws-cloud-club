@@ -59,7 +59,7 @@ export default function LandingPage() {
           {/* LEFT */}
           <div>
             <h2 className="text-2xl md:text-3xl font-medium mb-5 tracking-tight">
-              What is <span className="text-aws-orange">AWS Cloud Club?</span>
+              What is <span className="text-aws-orange">AWS Cloud Club MUJ</span> all about?
             </h2>
 
             <p className="text-gray-400 text-sm md:text-base mb-8 leading-relaxed">
