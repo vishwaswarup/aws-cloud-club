@@ -24,12 +24,12 @@ export default function LandingPage() {
 
           {/* Heading */}
           <h1 className="text-3xl md:text-5xl font-medium mb-5 tracking-tight leading-tight">
-            Build on <span className="text-aws-orange">AWS Cloud</span>
+            Build on <span className="text-aws-orange">AWS Cloud with MUJ</span>
           </h1>
 
           {/* Subtext */}
           <p className="text-gray-400 text-sm md:text-base max-w-lg mx-auto mb-8 leading-relaxed">
-            A student community focused on learning, building, and growing with cloud technologies.
+            A student-led community at Manipal University Jaipur focused on learning, building, and growing with cloud technologies. We bring together curious minds to explore AWS, work on real-world projects, and develop skills that prepare us for the future.
           </p>
 
           {/* Buttons */}
@@ -63,7 +63,7 @@ export default function LandingPage() {
             </h2>
 
             <p className="text-gray-400 text-sm md:text-base mb-8 leading-relaxed">
-              AWS Cloud Clubs are student-led communities focused on learning cloud technologies through hands-on experience.
+              AWS Cloud Club MUJ is a student-led community where we learn, build, and grow together using cloud technologies. We organize hands-on workshops, real-world projects, and interactive sessions focused on AWS, helping students gain practical experience and develop industry-relevant skills.
             </p>
 
             {/* Features */}
