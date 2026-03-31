@@ -24,17 +24,18 @@ const awsIcons = [
 export default function CloudVisual() {
   const [nodes, setNodes] = useState<any[]>([]);
 
-  // 🔥 generate nodes
+  // 🔥 generate EXACTLY ONE NODE PER ICON
   useEffect(() => {
-    const generated = Array.from({ length: 18 }).map((_, i) => ({
+    const generated = awsIcons.map((icon, i) => ({
       id: i,
-      icon: awsIcons[i % awsIcons.length],
+      icon,
       x: Math.random() * 90 + 5,
       y: Math.random() * 90 + 5,
       dx: (Math.random() - 0.5) * 0.12,
       dy: (Math.random() - 0.5) * 0.12,
       size: 22 + Math.random() * 8,
     }));
+
     setNodes(generated);
   }, []);
 
