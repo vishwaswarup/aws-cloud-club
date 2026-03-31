@@ -24,7 +24,7 @@ export default function LandingPage() {
 
           {/* Heading */}
           <h1 className="text-3xl md:text-5xl font-medium mb-5 tracking-tight leading-tight">
-            Build on <span className="text-aws-orange">AWS Cloud with MUJ</span>
+            Build on <span className="text-aws-orange">AWS Cloud</span> with <span className="text-aws-orange">MUJ</span>
           </h1>
 
           {/* Subtext */}
