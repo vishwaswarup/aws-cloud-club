@@ -1,108 +1,86 @@
 import { motion } from "motion/react";
-import { useState } from "react";
 
 const nodes = [
-  { id: 1, x: 0, y: 0, label: "AWS" },
+  { x: 0, y: 0, icon: "/aws/aws.svg" },
 
-  { id: 2, x: -90, y: -60, label: "EC2" },
-  { id: 3, x: 90, y: -60, label: "S3" },
-  { id: 4, x: -90, y: 60, label: "Lambda" },
-  { id: 5, x: 90, y: 60, label: "RDS" },
+  { x: -140, y: -90, icon: "/aws/ec2.svg" },
+  { x: 140, y: -90, icon: "/aws/s3.svg" },
 
-  { id: 6, x: 0, y: -100, label: "API" },
-  { id: 7, x: 0, y: 100, label: "CloudFront" },
+  { x: -140, y: 90, icon: "/aws/lambda.svg" },
+  { x: 140, y: 90, icon: "/aws/rds.svg" },
 
-  { id: 8, x: -140, y: 0, label: "IAM" },
-  { id: 9, x: 140, y: 0, label: "VPC" },
+  { x: 0, y: -150, icon: "/aws/apigateway.svg" },
+  { x: 0, y: 150, icon: "/aws/cloudfront.svg" },
+
+  { x: -220, y: 0, icon: "/aws/vpc.svg" },
+  { x: 220, y: 0, icon: "/aws/ec2.svg" },
 ];
 
 export default function CloudVisual() {
-  const [hovered, setHovered] = useState<number | null>(null);
-
   return (
-    <div className="relative w-full h-[320px] flex items-center justify-center rounded-md border border-white/10 bg-[#161b22] overflow-hidden">
+    <div className="relative w-full h-[360px] flex items-center justify-center rounded-md border border-white/10 bg-[#161b22] overflow-hidden">
 
       {/* CONNECTION LINES */}
       <svg className="absolute inset-0 w-full h-full">
-
-        {/* Center connections */}
-        {nodes.slice(1).map((node) => (
+        {nodes.slice(1).map((node, i) => (
           <line
-            key={node.id}
+            key={i}
             x1="50%"
             y1="50%"
-            x2={`${50 + node.x / 4}%`}
-            y2={`${50 + node.y / 4}%`}
+            x2={`${50 + node.x / 5}%`}
+            y2={`${50 + node.y / 5}%`}
             stroke="rgba(255,153,0,0.15)"
-            strokeWidth="1"
           />
         ))}
 
-        {/* Extra mesh connections (denser web) */}
-        {nodes.slice(1).map((a, i) =>
-          nodes.slice(i + 2).map((b) => (
+        {/* extra mesh */}
+        {nodes.map((a, i) =>
+          nodes.slice(i + 1).map((b, j) => (
             <line
-              key={`${a.id}-${b.id}`}
-              x1={`${50 + a.x / 4}%`}
-              y1={`${50 + a.y / 4}%`}
-              x2={`${50 + b.x / 4}%`}
-              y2={`${50 + b.y / 4}%`}
-              stroke="rgba(255,255,255,0.05)"
+              key={`${i}-${j}`}
+              x1={`${50 + a.x / 5}%`}
+              y1={`${50 + a.y / 5}%`}
+              x2={`${50 + b.x / 5}%`}
+              y2={`${50 + b.y / 5}%`}
+              stroke="rgba(255,255,255,0.04)"
               strokeWidth="0.5"
             />
           ))
         )}
-
       </svg>
 
-      {/* NODES */}
+      {/* NODES WITH ICONS */}
       {nodes.map((node, i) => (
         <motion.div
-          key={node.id}
-          onMouseEnter={() => setHovered(node.id)}
-          onMouseLeave={() => setHovered(null)}
-          animate={{
-            y: [node.y, node.y + 4, node.y],
-          }}
+          key={i}
+          animate={{ y: [node.y, node.y + 6, node.y] }}
           transition={{
-            duration: 3 + i * 0.3,
+            duration: 4 + i,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute flex flex-col items-center"
+          className="absolute"
           style={{
             transform: `translate(${node.x}px, ${node.y}px)`,
           }}
         >
-          {/* NODE */}
-          <div
-            className={`rounded-full transition-all duration-300 ${
+          <img
+            src={node.icon}
+            className={`${
               i === 0
-                ? "w-4 h-4 bg-[#FF9900] shadow-[0_0_12px_rgba(255,153,0,0.6)]"
-                : "w-2 h-2 bg-white/70 hover:bg-[#FF9900]"
-            }`}
+                ? "w-10 opacity-100"
+                : "w-7 opacity-80 hover:opacity-100"
+            } transition`}
           />
-
-          {/* LABEL (on hover) */}
-          {hovered === node.id && (
-            <motion.span
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: -8 }}
-              className="text-[10px] text-gray-300 mt-1"
-            >
-              {node.label}
-            </motion.span>
-          )}
         </motion.div>
       ))}
 
-      {/* CENTER PULSE */}
+      {/* CENTER GLOW */}
       <motion.div
-        className="absolute w-24 h-24 border border-[#FF9900]/10 rounded-full"
-        animate={{ scale: [1, 1.4], opacity: [0.3, 0] }}
+        className="absolute w-32 h-32 border border-[#FF9900]/10 rounded-full"
+        animate={{ scale: [1, 1.5], opacity: [0.3, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       />
-
     </div>
   );
 }
