@@ -12,14 +12,20 @@ import EventDetailsPage from './pages/EventDetailsPage';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-aws-black text-white selection:bg-aws-orange selection:text-black">
+      <div className="min-h-screen flex flex-col bg-[#0b0f14] text-white">
+
+        {/* Navbar */}
         <Navbar />
+
+        {/* Main */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/event" element={<EventDetailsPage />} />
+            <Route path="/event/:id" element={<EventDetailsPage />} />
           </Routes>
         </main>
+
+        {/* Footer */}
         <Footer />
       </div>
     </Router>

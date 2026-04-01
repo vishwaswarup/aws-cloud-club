@@ -1,49 +1,120 @@
 @import "tailwindcss";
 
-@theme {
-  --color-aws-orange: #FF9900;
-  --color-aws-dark: #232F3E;
-  --color-aws-black: #000000;
-  --color-aws-white: #FFFFFF;
-  --color-aws-gray: #F2F3F3;
-  
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+/* 🔤 AWS EMBER FONT */
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/Amazon Ember Light.tff") format("tff");
+  font-weight: 300;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/Amazon Ember.tff") format("tff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AWS Ember";
+  src: url("/fonts/Amazon Ember Bold.tff") format("tff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* 🎨 AWS-INSPIRED THEME (REFINED) */
+@theme {
+  --color-aws-orange: #FF9900;
+  --color-aws-bg: #0b0f14;
+  --color-aws-surface: #161b22;
+  --color-aws-surface-hover: #1c2128;
+  --color-aws-border: rgba(255,255,255,0.08);
+
+  /* ✅ UPDATED FONT */
+  --font-sans: "AWS Ember", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 🌌 GLOBAL */
 :root {
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: #0b0f14;
+  color: #ffffff;
 }
 
 body {
-  @apply font-sans antialiased;
+  font-family: "AWS Ember", system-ui, sans-serif;
+  @apply antialiased bg-[#0b0f14];
+
+  /* 🔥 subtle AWS feel */
+  letter-spacing: -0.01em;
 }
 
-.aws-gradient {
-  background: linear-gradient(135deg, #FF9900 0%, #FFB84D 100%);
+/* ✨ TYPOGRAPHY TWEAKS */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
+/* 📦 CARD (SUBTLE DEPTH) */
 .aws-card {
-  @apply bg-aws-dark border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-aws-orange/50 hover:shadow-[0_0_20px_rgba(255,153,0,0.1)];
+  @apply bg-[#161b22] border border-white/10 rounded-md 
+  transition-all duration-200;
 }
 
+.aws-card:hover {
+  @apply border-white/20;
+}
+
+/* 🔘 BUTTON BASE */
 .aws-button {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply px-5 py-2.5 rounded-md font-medium transition-all duration-200;
 }
 
+/* 🔥 PRIMARY BUTTON */
 .aws-button-primary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-black hover:scale-105 active:scale-95;
-  background: linear-gradient(135deg, #FF9900 0%, #FFB84D 100%);
+  @apply px-5 py-2.5 rounded-md font-medium text-black;
+  background-color: #FF9900;
 }
 
+.aws-button-primary:hover {
+  background-color: #ffad33;
+}
+
+/* ✨ SECONDARY BUTTON */
 .aws-button-secondary {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-aws-orange text-aws-orange hover:bg-aws-orange/10;
+  @apply px-5 py-2.5 rounded-md font-medium border border-white/20 text-gray-300;
 }
 
+.aws-button-secondary:hover {
+  @apply bg-white/5;
+}
+
+/* 🧾 INPUT */
 .aws-input {
-  @apply w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-aws-orange transition-colors;
+  @apply w-full bg-[#0d1117] border border-white/10 rounded-md px-3 py-2 
+  focus:outline-none focus:border-[#FF9900] text-sm;
 }
 
+/* 🏷 LABEL */
 .aws-label {
-  @apply block text-sm font-medium text-gray-400 mb-2;
+  @apply block text-xs font-medium text-gray-400 mb-1;
+}
+
+/* 🔗 LINKS */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* ✨ SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🧠 HUMAN TOUCH: subtle divider utility */
+.aws-divider {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* 🧠 HUMAN TOUCH: section spacing */
+.aws-section {
+  @apply py-20;
 }
