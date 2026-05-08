@@ -3,32 +3,38 @@
 /* 🔤 AWS EMBER FONT */
 @font-face {
   font-family: "AWS Ember";
-  src: url("/fonts/Amazon Ember Light.tff") format("tff");
+  src: url("/fonts/Amazon Ember Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "AWS Ember";
-  src: url("/fonts/Amazon Ember.tff") format("tff");
+  src: url("/fonts/Amazon Ember.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "AWS Ember";
-  src: url("/fonts/Amazon Ember Bold.tff") format("tff");
+  src: url("/fonts/Amazon Ember Bold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 
-/* 🎨 AWS-INSPIRED THEME (REFINED) */
+/* 🎨 REFINED MODERN TECH THEME */
 @theme {
-  --color-aws-orange: #FF9900;
-  --color-aws-bg: #0b0f14;
-  --color-aws-surface: #161b22;
-  --color-aws-surface-hover: #1c2128;
-  --color-aws-border: rgba(255,255,255,0.08);
+  --color-primary: #9b5cff;
+  --color-primary-soft: #b784ff;
+
+  --color-bg: #f5f3ef;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0ece6;
+
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  --color-text: #111111;
+  --color-text-muted: #666666;
 
   /* ✅ UPDATED FONT */
   --font-sans: "AWS Ember", ui-sans-serif, system-ui, sans-serif;
@@ -36,32 +42,43 @@
 
 /* 🌌 GLOBAL */
 :root {
-  background-color: #0b0f14;
-  color: #ffffff;
+  background-color: #f5f3ef;
+  color: #111111;
 }
 
 body {
   font-family: "AWS Ember", system-ui, sans-serif;
-  @apply antialiased bg-[#0b0f14];
+  @apply antialiased bg-[#f5f3ef] text-[#111111];
 
-  /* 🔥 subtle AWS feel */
-  letter-spacing: -0.01em;
+  /* ✨ cleaner editorial feel */
+  letter-spacing: -0.015em;
 }
 
-/* ✨ TYPOGRAPHY TWEAKS */
-h1, h2, h3 {
-  letter-spacing: -0.02em;
-  font-weight: 500;
+/* ✨ TYPOGRAPHY */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  line-height: 0.95;
 }
 
-/* 📦 CARD (SUBTLE DEPTH) */
+/* 📦 CARD */
 .aws-card {
-  @apply bg-[#161b22] border border-white/10 rounded-md 
-  transition-all duration-200;
+  @apply bg-white border rounded-md transition-all duration-200;
+
+  border-color: rgba(0, 0, 0, 0.08);
+
+  /* subtle depth instead of glass */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .aws-card:hover {
-  @apply border-white/20;
+  border-color: rgba(0, 0, 0, 0.14);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 /* 🔘 BUTTON BASE */
@@ -71,32 +88,60 @@ h1, h2, h3 {
 
 /* 🔥 PRIMARY BUTTON */
 .aws-button-primary {
-  @apply px-5 py-2.5 rounded-md font-medium text-black;
-  background-color: #FF9900;
+  @apply px-5 py-2.5 rounded-md font-medium text-white;
+
+  background-color: #9b5cff;
 }
 
 .aws-button-primary:hover {
-  background-color: #ffad33;
+  background-color: #8748f5;
+
+  transform: translateY(-1px);
 }
 
 /* ✨ SECONDARY BUTTON */
 .aws-button-secondary {
-  @apply px-5 py-2.5 rounded-md font-medium border border-white/20 text-gray-300;
+  @apply px-5 py-2.5 rounded-md font-medium;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  color: #333333;
+
+  background-color: transparent;
 }
 
 .aws-button-secondary:hover {
-  @apply bg-white/5;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 /* 🧾 INPUT */
 .aws-input {
-  @apply w-full bg-[#0d1117] border border-white/10 rounded-md px-3 py-2 
-  focus:outline-none focus:border-[#FF9900] text-sm;
+  @apply w-full rounded-md px-3 py-2 text-sm transition-all duration-200;
+
+  background-color: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  color: #111111;
+}
+
+.aws-input:focus {
+  outline: none;
+
+  border-color: #9b5cff;
+
+  box-shadow: 0 0 0 3px rgba(155, 92, 255, 0.12);
 }
 
 /* 🏷 LABEL */
 .aws-label {
-  @apply block text-xs font-medium text-gray-400 mb-1;
+  @apply block text-xs font-medium mb-1;
+
+  color: #666666;
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
 }
 
 /* 🔗 LINKS */
@@ -104,17 +149,51 @@ a {
   @apply transition-colors duration-200;
 }
 
+a:hover {
+  color: #9b5cff;
+}
+
 /* ✨ SCROLL */
 html {
   scroll-behavior: smooth;
 }
 
-/* 🧠 HUMAN TOUCH: subtle divider utility */
+/* 🧠 DIVIDER */
 .aws-divider {
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-/* 🧠 HUMAN TOUCH: section spacing */
+/* 🧠 SECTION SPACING */
 .aws-section {
-  @apply py-20;
+  @apply py-24;
+}
+
+/* ✨ OPTIONAL UTILITY: geometric highlight */
+.aws-highlight {
+  position: relative;
+}
+
+.aws-highlight::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -2px;
+
+  width: 100%;
+  height: 6px;
+
+  background: rgba(155, 92, 255, 0.18);
+
+  z-index: -1;
+}
+
+/* ✨ OPTIONAL UTILITY: subtle grid texture */
+.aws-grid-bg {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+
+  background-size: 32px 32px;
 }
