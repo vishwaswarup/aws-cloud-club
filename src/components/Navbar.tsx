@@ -20,7 +20,7 @@ export default function Navbar() {
           >
             <img src="/newlogo.jpg" alt="AWS Cloud Club Logo" className="h-6 w-6 rounded object-contain" />
             <span className="text-sm font-medium tracking-tight">
-              AWS <span className="text-[#FF9900]">Cloud Club MUJ</span>
+              AWS <span className="text-[#FF9900]">Student Builder Group MUJ</span>
             </span>
           </Link>
 
