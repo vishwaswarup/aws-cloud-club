@@ -18,7 +18,7 @@ export default function LandingPage() {
 
           <h1 className="text-3xl md:text-5xl font-semibold mb-5 tracking-tight leading-tight">
   <span className="text-[#FF9900] drop-shadow-[0_0_6px_rgba(255,153,0,0.35)]">
-    AWS CLOUD CLUB MUJ
+    AWS Student Builder Group MUJ
   </span>
 </h1>
 
@@ -48,11 +48,11 @@ export default function LandingPage() {
           <div>
 
             <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-              About <span className="text-[#FF9900]">AWS Cloud Club MUJ</span>
+              About <span className="text-[#FF9900]">AWS Student Builder Group MUJ</span>
             </h2>
 
             <p className="text-gray-400 text-sm md:text-base mb-5 leading-relaxed">
-              AWS Cloud Club MUJ is a student-driven initiative built to bridge the gap between
+              AWS Student Builder Group MUJ is a student-driven initiative built to bridge the gap between
               theoretical knowledge and real-world cloud applications. The club provides a platform
               where students can actively explore AWS technologies, understand how modern systems
               are built, and gain hands-on experience.
