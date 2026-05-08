@@ -15,7 +15,7 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-2 mb-3">
               <img src="/newlogo.jpg" alt="AWS Cloud Club Logo" className="h-5 w-5 rounded object-contain" />
               <span className="text-sm font-medium tracking-tight">
-                AWS <span className="text-[#FF9900]">Cloud Club MUJ</span>
+                AWS <span className="text-[#FF9900]">Student Builder Group MUJ</span>
               </span>
             </Link>
 
@@ -73,10 +73,10 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 pt-5 flex flex-col md:flex-row justify-between items-center text-[11px] text-gray-500">
 
-          <p>© 2026 AWS Cloud Club MUJ</p>
+          <p>© 2026 AWS Student Builder Group MUJ</p>
 
           <p className="mt-2 md:mt-0">
-            Built with <span className="text-gray-400">♥</span> by AWS Cloud Club Team - MUJ
+            Built with <span className="text-gray-400">♥</span> by AWS Student Builder Group Team - MUJ
           </p>
 
         </div>
