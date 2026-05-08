@@ -64,7 +64,7 @@ export default function Navbar() {
 
           {/* RIGHT - MUJ LOGO */}
           <img
-            src="/images/manipalpnglogo.png"
+            src="/images/mujawslogo.png"
             alt="MUJ Logo"
             className="h-7 w-auto opacity-70 hover:opacity-100 transition duration-300"
           />
