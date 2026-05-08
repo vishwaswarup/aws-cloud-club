@@ -1,4 +1,4 @@
-import { Cloud, ArrowRight, Code, Users, Zap } from 'lucide-react';
+import { ArrowRight, Code, Users, Zap } from 'lucide-react';
 import EventCard from '../components/EventCard';
 import { EVENTS } from '../constants';
 import CloudVisual from '../components/CloudVisual';
@@ -10,125 +10,188 @@ export default function LandingPage() {
   });
 
   return (
-    <div className="pt-20 bg-[#0b0f14]">
+    <div className="pt-20 bg-[#f5f3ef] text-black aws-grid-bg">
 
       {/* HERO */}
-      <section className="py-16 border-b border-white/10">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+      <section className="py-24 border-b border-black/10">
+        <div className="max-w-6xl mx-auto px-4 text-center">
 
-          <h1 className="text-3xl md:text-5xl font-semibold mb-5 tracking-tight leading-tight">
-  <span className="text-[#FF9900] drop-shadow-[0_0_6px_rgba(255,153,0,0.35)]">
-    AWS Student Builder Group MUJ
-  </span>
-</h1>
+          <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-[-0.06em] leading-[0.92]">
 
-          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-            A student-led community at Manipal University Jaipur focused on learning, building,
-            and growing with cloud technologies through real-world exposure and collaboration.
+            AWS Student
+            <br />
+
+            <span className="text-[#9b5cff]">
+              Builder Group
+            </span>
+
+            <br />
+
+            MUJ
+
+          </h1>
+
+          <p className="text-[#5f5f5f] text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+            A student-led community at Manipal University Jaipur focused on learning,
+            building, and growing with cloud technologies through real-world exposure
+            and collaboration.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <a href="#events" className="aws-button-primary flex items-center gap-2 justify-center">
-              Explore Events <ArrowRight className="w-4 h-4" />
+
+            <a
+              href="#events"
+              className="aws-button-primary flex items-center gap-2 justify-center"
+            >
+              Explore Events
+              <ArrowRight className="w-4 h-4" />
             </a>
 
-            <a href="#about" className="aws-button-secondary">
+            <a
+              href="#about"
+              className="aws-button-secondary"
+            >
               Learn More
             </a>
+
           </div>
 
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-20 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <section
+        id="about"
+        className="py-28 border-b border-black/10"
+      >
+
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
 
           {/* LEFT CONTENT */}
           <div>
 
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-              About <span className="text-[#FF9900]">AWS Student Builder Group MUJ</span>
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-[1] mb-8">
+
+              About
+
+              <br />
+
+              <span className="text-[#9b5cff]">
+                AWS Student Builder Group MUJ
+              </span>
+
             </h2>
 
-            <p className="text-gray-400 text-sm md:text-base mb-5 leading-relaxed">
-              AWS Student Builder Group MUJ is a student-driven initiative built to bridge the gap between
-              theoretical knowledge and real-world cloud applications. The club provides a platform
-              where students can actively explore AWS technologies, understand how modern systems
-              are built, and gain hands-on experience.
+            <p className="text-[#5f5f5f] text-sm md:text-base mb-5 leading-relaxed">
+              AWS Student Builder Group MUJ is a student-driven initiative built
+              to bridge the gap between theoretical knowledge and real-world cloud
+              applications. The club provides a platform where students can actively
+              explore AWS technologies, understand how modern systems are built,
+              and gain hands-on experience.
             </p>
 
-            <p className="text-gray-400 text-sm md:text-base mb-5 leading-relaxed">
-              We focus on practical learning — from building backend systems to deploying scalable
-              applications. Our sessions are designed to ensure that members not only understand
-              concepts but also apply them in meaningful ways.
+            <p className="text-[#5f5f5f] text-sm md:text-base mb-5 leading-relaxed">
+              We focus on practical learning — from building backend systems to
+              deploying scalable applications. Our sessions are designed to ensure
+              that members not only understand concepts but also apply them in
+              meaningful ways.
             </p>
 
-            <p className="text-gray-400 text-sm md:text-base mb-8 leading-relaxed">
-              Members can expect workshops, collaborative projects, guest sessions, and opportunities
-              to work with tools used in the industry. The club emphasizes consistency, curiosity,
-              and building real skills over passive learning.
+            <p className="text-[#5f5f5f] text-sm md:text-base mb-10 leading-relaxed">
+              Members can expect workshops, collaborative projects, guest sessions,
+              and opportunities to work with tools used in the industry. The club
+              emphasizes consistency, curiosity, and building real skills over
+              passive learning.
             </p>
 
             {/* FEATURES */}
-            <div className="space-y-4">
+            <div className="space-y-6">
 
-              <div className="flex gap-3 items-start">
-                <Code className="text-[#FF9900] w-4 h-4 mt-1" />
+              <div className="flex gap-4 items-start">
+
+                <Code className="text-[#9b5cff] w-4 h-4 mt-1" />
+
                 <div>
-                  <h4 className="font-medium text-sm">Hands-on Projects</h4>
-                  <p className="text-xs text-gray-500">
+
+                  <h4 className="font-medium text-sm mb-1">
+                    Hands-on Projects
+                  </h4>
+
+                  <p className="text-xs text-[#666666]">
                     Build and deploy real applications using AWS
                   </p>
+
                 </div>
+
               </div>
 
-              <div className="flex gap-3 items-start">
-                <Users className="text-[#FF9900] w-4 h-4 mt-1" />
+              <div className="flex gap-4 items-start">
+
+                <Users className="text-[#9b5cff] w-4 h-4 mt-1" />
+
                 <div>
-                  <h4 className="font-medium text-sm">Strong Community</h4>
-                  <p className="text-xs text-gray-500">
+
+                  <h4 className="font-medium text-sm mb-1">
+                    Strong Community
+                  </h4>
+
+                  <p className="text-xs text-[#666666]">
                     Learn and collaborate with like-minded students
                   </p>
+
                 </div>
+
               </div>
 
-              <div className="flex gap-3 items-start">
-                <Zap className="text-[#FF9900] w-4 h-4 mt-1" />
+              <div className="flex gap-4 items-start">
+
+                <Zap className="text-[#9b5cff] w-4 h-4 mt-1" />
+
                 <div>
-                  <h4 className="font-medium text-sm">Industry Exposure</h4>
-                  <p className="text-xs text-gray-500">
+
+                  <h4 className="font-medium text-sm mb-1">
+                    Industry Exposure
+                  </h4>
+
+                  <p className="text-xs text-[#666666]">
                     Interact with experts and understand real-world workflows
                   </p>
+
                 </div>
+
               </div>
 
             </div>
+
           </div>
 
           {/* RIGHT VISUAL */}
           <div className="space-y-6">
 
-            {/* 🔥 ANIMATION */}
-            <div className="rounded-lg border border-white/10 overflow-hidden">
+            {/* CLOUD VISUAL */}
+            <div className="rounded-md border border-black/10 overflow-hidden bg-white">
               <CloudVisual />
             </div>
 
-            {/* 🔥 IMAGE GRID (FIXED PROPERLY) */}
+            {/* IMAGE GRID */}
             <div className="grid grid-cols-2 gap-4">
 
-              <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10">
+              <div className="aspect-[4/3] overflow-hidden rounded-md border border-black/10 bg-white">
+
                 <img
                   src="/images/about1.jpeg"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                  className="w-full h-full object-cover hover:opacity-90 transition duration-300"
                 />
+
               </div>
 
-              <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10">
+              <div className="aspect-[4/3] overflow-hidden rounded-md border border-black/10 bg-white">
+
                 <img
                   src="/images/about2.jpeg"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                  className="w-full h-full object-cover hover:opacity-90 transition duration-300"
                 />
+
               </div>
 
             </div>
@@ -136,29 +199,43 @@ export default function LandingPage() {
           </div>
 
         </div>
+
       </section>
 
       {/* EVENTS */}
-      <section id="events" className="py-20">
+      <section
+        id="events"
+        className="py-28"
+      >
+
         <div className="max-w-6xl mx-auto px-4">
 
-          <div className="mb-10">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+          <div className="mb-14">
+
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.05em] leading-none mb-3">
               Events
             </h2>
 
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#5f5f5f] text-sm md:text-base">
               Explore our workshops, sessions, and past events.
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
             {sortedEvents.map((event, index) => (
-              <EventCard key={event.id} event={event} index={index} />
+              <EventCard
+                key={event.id}
+                event={event}
+                index={index}
+              />
             ))}
+
           </div>
 
         </div>
+
       </section>
 
     </div>
