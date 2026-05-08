@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Cloud } from 'lucide-react';
 
 export default function Navbar() {
 
@@ -19,7 +18,7 @@ export default function Navbar() {
             onClick={handleHomeClick}
             className="flex items-center gap-2"
           >
-            <Cloud className="w-5 h-5 text-[#FF9900]" />
+            <img src="/newlogo.jpg" alt="AWS Cloud Club Logo" className="h-6 w-6 rounded object-contain" />
             <span className="text-sm font-medium tracking-tight">
               AWS <span className="text-[#FF9900]">Cloud Club MUJ</span>
             </span>

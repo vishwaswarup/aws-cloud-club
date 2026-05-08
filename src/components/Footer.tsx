@@ -1,4 +1,4 @@
-import { Cloud, Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Logo */}
           <div>
             <Link to="/" className="flex items-center gap-2 mb-3">
-              <Cloud className="w-4.5 h-4.5 text-[#FF9900]/90" />
+              <img src="/newlogo.jpg" alt="AWS Cloud Club Logo" className="h-5 w-5 rounded object-contain" />
               <span className="text-sm font-medium tracking-tight">
                 AWS <span className="text-[#FF9900]">Cloud Club MUJ</span>
               </span>
