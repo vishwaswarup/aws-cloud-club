@@ -27,8 +27,9 @@ export default function LandingPage() {
 
             <br />
 
-            Manipal University Jaipur
-
+            <span className="text-2xl md:text-4xl">
+                Manipal University Jaipur
+            </span>
           </h1>
 
           <p className="text-[#5f5f5f] text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
