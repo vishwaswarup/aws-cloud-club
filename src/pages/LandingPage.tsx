@@ -22,7 +22,7 @@ export default function LandingPage() {
             <span className="text-[#9b5cff]"> 
               Builder Group
             </span>
-            <br /> Manipal University Jaipur
+            <br /> MUJ
           </h1>
           
 
