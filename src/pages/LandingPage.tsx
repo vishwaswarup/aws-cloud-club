@@ -27,7 +27,7 @@ export default function LandingPage() {
 
             <br />
 
-            MUJ
+            Manipal University Jaipur
 
           </h1>
 
