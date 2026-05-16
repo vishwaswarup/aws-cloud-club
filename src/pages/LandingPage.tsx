@@ -17,20 +17,19 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 text-center">
 
           <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-[-0.06em] leading-[0.92]">
+  AWS Student
+  <br />
 
-            AWS Student
-            <br />
+  <span className="text-[#9b5cff]">
+    Builder Group
+  </span>
 
-            <span className="text-[#9b5cff]">
-              Builder Group
-            </span>
+  <br />
 
-            <br />
-
-            <span className="text-2xl md:text-4xl">
-                Manipal University Jaipur
-            </span>
-          </h1>
+  <span className="text-lg md:text-2xl font-normal tracking-normal text-gray-300">
+    Manipal University Jaipur
+  </span>
+</h1>
 
           <p className="text-[#5f5f5f] text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
             A student-led community at Manipal University Jaipur focused on learning,
