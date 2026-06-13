@@ -27,7 +27,7 @@ export const EVENTS: Event[] = [
       paragraphs: [
         'The second session of AWS Student Builder Group MUJ was conducted seamlessly by Shubham Londhe Sir, covering the complete journey of deploying a backend application from a local machine to the cloud.',
         'Participants got hands-on experience building a Python Flask application, understanding project structure, environment setup, and the step-by-step deployment workflow using AWS services.',
-        'The session was engaging, interactive, and packed with practical insights — from writing the first endpoint to watching it go live on the cloud. A big thank you to Shubham Londhe Sir for making complex concepts approachable and fun.',
+        'The session was engaging, interactive, and packed with practical insights, from writing the first endpoint to watching it go live on the cloud. A big thank you to Shubham Londhe Sir for making complex concepts approachable and fun.',
       ],
       photos: [
         '/images/img1.jpg',
@@ -45,7 +45,7 @@ export const EVENTS: Event[] = [
     shortDescription: 'We are excited to share that the AWS Student Builder Group at Manipal University Jaipur has been officially launched...',
     fullDescription: 'The AWS Student Builder Group MUJ was officially launched with an inspiring inaugural event, marking the beginning of a dynamic cloud-focused student community at Manipal University Jaipur. The event brought together enthusiastic students eager to explore cloud computing, AWS technologies, and future career opportunities in this domain. The session was graced by esteemed speakers Mr. Pawan Sharma and Mr. Somil Jain, who shared valuable insights into the world of cloud, industry trends, and practical career guidance. Their experiences and perspectives provided students with a clear understanding of real-world applications of AWS and the growing importance of cloud technologies. The event set a strong foundation for innovation, collaboration, and learning, encouraging students to actively engage, build projects, and grow within the AWS ecosystem.',
 
-    // 🔥 OPTIONAL (since registration closed)
+    
     meetupLink: '',
 
     registrationOpen: false,
