@@ -8,9 +8,8 @@ export const EVENTS: Event[] = [
     time: '10:30 AM - 12:30 PM',
     venue: 'LHC 103 AB4',
     shortDescription: 'A hands-on AWS Student Builder Group workshop where participants build a backend application using Python and Flask while understanding real-world development workflows.',
-    fullDescription: 'The “Localhost to Cloud Host: Build & Deploy” workshop is a hands-on session organized by the AWS Student Builder Group at Manipal University Jaipur. The workshop aims to provide participants with a practical understanding of how backend applications are developed and structured using modern technologies. During the session, participants will build a backend application using Python and Flask, gaining insight into how applications are designed, managed, and prepared for deployment. The focus is on understanding the development workflow and the key components involved in taking an application beyond the local environment. This workshop is conducted in a hybrid mode, allowing participants to join both offline and online, ensuring accessibility to a wider audience. The session will be led by Shubham Londhe, who will guide participants through the process with a focus on clarity and practical learning.',
+    fullDescription: 'The "Localhost to Cloud Host: Build & Deploy" workshop is a hands-on session organized by the AWS Student Builder Group at Manipal University Jaipur. The workshop aims to provide participants with a practical understanding of how backend applications are developed and structured using modern technologies. During the session, participants will build a backend application using Python and Flask, gaining insight into how applications are designed, managed, and prepared for deployment. The focus is on understanding the development workflow and the key components involved in taking an application beyond the local environment. This workshop is conducted in a hybrid mode, allowing participants to join both offline and online, ensuring accessibility to a wider audience. The session will be led by Shubham Londhe, who will guide participants through the process with a focus on clarity and practical learning.',
 
-    // 🔥 ADD THIS
     meetupLink: 'https://www.meetup.com/aws-cloud-club-at-manipal-university-jaipur/events/313966432/',
 
     registrationOpen: true,
@@ -22,8 +21,21 @@ export const EVENTS: Event[] = [
         bio: 'Senior Developer Advocate focused on helping developers build and ship cloud-native apps on AWS.',
       },
     ],
-  },
 
+    recap: {
+      title: 'Session Recap — Localhost to Cloud Host',
+      paragraphs: [
+        'The second session of AWS Student Builder Group MUJ was conducted seamlessly by Shubham Londhe Sir, covering the complete journey of deploying a backend application from a local machine to the cloud.',
+        'Participants got hands-on experience building a Python Flask application, understanding project structure, environment setup, and the step-by-step deployment workflow using AWS services.',
+        'The session was engaging, interactive, and packed with practical insights — from writing the first endpoint to watching it go live on the cloud. A big thank you to Shubham Londhe Sir for making complex concepts approachable and fun.',
+      ],
+      photos: [
+        '/images/img1.jpg',
+        '/images/img2.jpg',
+        '/images/img3.jpg',
+      ],
+    },
+  },
   {
     id: '2',
     title: 'LAUNCH EVENT',
